@@ -25,4 +25,27 @@
      // For a Object
      // $row->title.'<br>'
  }
+
+
+ $author = 'Brad'";
+ $is_published = true;
+
+ // Query treatement pdo -- Positional Params
+
+ // $sql = 'SELECT * FROM post WHERE author = ?';
+ // $stmt = $pdo->prepare($sql);
+ // $stmt->execute([$author]);
+ // $posts = $stmt->fetchAll();
+          // could have a PDO::ASSOC override
+ 
+ $sql = 'SELECT * FROM post WHERE author = :author' && is_published = :is_published;
+ $stmt = $pdo->prepare($sql);
+ $stmt->execute(['autor' => $author, 'is_published' => $is_published]);
+ $posts = $stmt->fetchAll();
+          // could have a PDO::ASSOC override
+ 
+
+ foreach($posts as $post){
+  echo $post->title. '<br>';
+ }
 ?>
